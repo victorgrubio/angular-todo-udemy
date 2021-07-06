@@ -35,7 +35,7 @@ class ApiService extends __BaseService {
     let __body: any = null;
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/api/categories/all`,
+      this.rootUrl + `/api/categories`,
       __body,
       {
         headers: __headers,
@@ -70,7 +70,7 @@ class ApiService extends __BaseService {
     let __body: any = null;
     let req = new HttpRequest<any>(
       'POST',
-      this.rootUrl + `/api/categories/create`,
+      this.rootUrl + `/categories`,
       __body,
       {
         headers: __headers,
@@ -105,7 +105,7 @@ class ApiService extends __BaseService {
     let __body: any = null;
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/api/todos/all`,
+      this.rootUrl + `/todos`,
       __body,
       {
         headers: __headers,
@@ -140,7 +140,7 @@ class ApiService extends __BaseService {
     let __body: any = null;
     let req = new HttpRequest<any>(
       'PATCH',
-      this.rootUrl + `/api/todos/update`,
+      this.rootUrl + `/todos`,
       __body,
       {
         headers: __headers,

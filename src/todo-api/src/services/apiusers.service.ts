@@ -12,11 +12,11 @@ import { UserDto } from '../models/user-dto';
   providedIn: 'root',
 })
 class ApiusersService extends __BaseService {
-  static readonly getAllUsersPath = '/api/users/all';
-  static readonly createUserPath = '/api/users/create';
-  static readonly deleteUserPath = '/api/users/delete/{id}';
-  static readonly getUserPath = '/api/users/{id}';
-  static readonly updateUserPath = '/api/users/{id}';
+  static readonly getAllUsersPath = '/users';
+  static readonly createUserPath = '/users';
+  static readonly deleteUserPath = '/users/{id}';
+  static readonly getUserPath = '/users/{id}';
+  static readonly updateUserPath = '/users/{id}';
 
   constructor(
     config: __Configuration,
@@ -35,7 +35,7 @@ class ApiusersService extends __BaseService {
     let __body: any = null;
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/api/users/all`,
+      this.rootUrl + `/users`,
       __body,
       {
         headers: __headers,
@@ -72,7 +72,7 @@ class ApiusersService extends __BaseService {
     __body = body;
     let req = new HttpRequest<any>(
       'POST',
-      this.rootUrl + `/api/users/create`,
+      this.rootUrl + `/users`,
       __body,
       {
         headers: __headers,
@@ -110,7 +110,7 @@ class ApiusersService extends __BaseService {
     if (id != null) __params = __params.set('id', id.toString());
     let req = new HttpRequest<any>(
       'DELETE',
-      this.rootUrl + `/api/users/delete/${id}`,
+      this.rootUrl + `/users/${id}`,
       __body,
       {
         headers: __headers,
@@ -148,7 +148,7 @@ class ApiusersService extends __BaseService {
     if (id != null) __params = __params.set('id', id.toString());
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/api/users/${id}`,
+      this.rootUrl + `/users/${id}`,
       __body,
       {
         headers: __headers,
@@ -192,7 +192,7 @@ class ApiusersService extends __BaseService {
     __body = params.body;
     let req = new HttpRequest<any>(
       'PATCH',
-      this.rootUrl + `/api/users/${params.id}`,
+      this.rootUrl + `/users/${params.id}`,
       __body,
       {
         headers: __headers,

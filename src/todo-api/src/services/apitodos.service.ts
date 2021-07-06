@@ -12,9 +12,9 @@ import { TodoDto } from '../models/todo-dto';
   providedIn: 'root',
 })
 class ApitodosService extends __BaseService {
-  static readonly createTodoPath = '/api/todos/create';
-  static readonly deleteTodoPath = '/api/todos/delete/{id}';
-  static readonly getTodoPath = '/api/todos/{todoId}';
+  static readonly createTodoPath = '/todos';
+  static readonly deleteTodoPath =  '/todos/{id}';
+  static readonly getTodoPath = '/todos/{todoId}';
 
   constructor(
     config: __Configuration,
@@ -35,7 +35,7 @@ class ApitodosService extends __BaseService {
     __body = body;
     let req = new HttpRequest<any>(
       'POST',
-      this.rootUrl + `/api/todos/create`,
+      this.rootUrl + `/todos`,
       __body,
       {
         headers: __headers,
@@ -73,7 +73,7 @@ class ApitodosService extends __BaseService {
     if (id != null) __params = __params.set('id', id.toString());
     let req = new HttpRequest<any>(
       'DELETE',
-      this.rootUrl + `/api/todos/delete/${id}`,
+      this.rootUrl + `/todos/${id}`,
       __body,
       {
         headers: __headers,
@@ -111,7 +111,7 @@ class ApitodosService extends __BaseService {
     if (todoId != null) __params = __params.set('todoId', todoId.toString());
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/api/todos/${todoId}`,
+      this.rootUrl + `/todos/${todoId}`,
       __body,
       {
         headers: __headers,

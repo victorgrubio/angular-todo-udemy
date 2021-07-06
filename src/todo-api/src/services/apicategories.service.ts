@@ -13,12 +13,12 @@ import { CategoryDto } from '../models/category-dto';
   providedIn: 'root',
 })
 class ApicategoriesService extends __BaseService {
-  static readonly deleteCategoryPath = '/api/api/categories/delete/{id}';
-  static readonly getAllTodoByCategoriesForTodayPath = '/api/categories/todos/today/{userId}';
-  static readonly getAllTodoByCategoriesIdPath = '/api/categories/todos/{id}';
-  static readonly updateCategoryPath = '/api/categories/update';
-  static readonly getAllCategoriesByUserIdPath = '/api/categories/users/{id}';
-  static readonly getCategoryPath = '/api/categories/{id}';
+  static readonly deleteCategoryPath = '/categories/{id}';
+  static readonly getAllTodoByCategoriesForTodayPath = '/categories/todos/today/{userId}';
+  static readonly getAllTodoByCategoriesIdPath = '/categories/todos/{id}';
+  static readonly updateCategoryPath = '/categories/update';
+  static readonly getAllCategoriesByUserIdPath = '/categories/users/{id}';
+  static readonly getCategoryPath = '/categories/{id}';
 
   constructor(
     config: __Configuration,
@@ -38,7 +38,7 @@ class ApicategoriesService extends __BaseService {
     if (id != null) __params = __params.set('id', id.toString());
     let req = new HttpRequest<any>(
       'DELETE',
-      this.rootUrl + `/api/api/categories/delete/${id}`,
+      this.rootUrl + `/categories/delete/${id}`,
       __body,
       {
         headers: __headers,
@@ -75,7 +75,7 @@ class ApicategoriesService extends __BaseService {
     if (userId != null) __params = __params.set('userId', userId.toString());
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/api/categories/todos/today/${userId}`,
+      this.rootUrl + `/categories/todos/today/${userId}`,
       __body,
       {
         headers: __headers,
@@ -113,7 +113,7 @@ class ApicategoriesService extends __BaseService {
     if (id != null) __params = __params.set('id', id.toString());
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/api/categories/todos/${id}`,
+      this.rootUrl + `/categories/todos/${id}`,
       __body,
       {
         headers: __headers,
@@ -151,7 +151,7 @@ class ApicategoriesService extends __BaseService {
     __body = body;
     let req = new HttpRequest<any>(
       'PATCH',
-      this.rootUrl + `/api/categories/update`,
+      this.rootUrl + `/categories`,
       __body,
       {
         headers: __headers,
@@ -189,7 +189,7 @@ class ApicategoriesService extends __BaseService {
     if (id != null) __params = __params.set('id', id.toString());
     let req = new HttpRequest<any>(
       'GET',
-      this.rootUrl + `/api/categories/users/${id}`,
+      this.rootUrl + `/categories/users/${id}`,
       __body,
       {
         headers: __headers,
