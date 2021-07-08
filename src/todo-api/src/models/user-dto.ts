@@ -1,9 +1,10 @@
 /* tslint:disable */
+/* eslint-disable */
 export interface UserDto {
-  id?: number;
-  firstName?: string;
-  lastName?: string;
   email?: string;
-  userName?: string;
+  firstName?: string;
+  id?: number;
+  lastName?: string;
   password?: string;
+  userName?: string;
 }

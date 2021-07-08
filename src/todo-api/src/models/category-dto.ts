@@ -1,10 +1,11 @@
 /* tslint:disable */
-import { UserDto } from './user-dto';
+/* eslint-disable */
 import { TodoDto } from './todo-dto';
+import { UserDto } from './user-dto';
 export interface CategoryDto {
+  description?: string;
   id?: number;
   name?: string;
-  description?: string;
-  user?: UserDto;
   todoList?: Array<TodoDto>;
+  user?: UserDto;
 }

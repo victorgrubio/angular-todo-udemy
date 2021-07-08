@@ -1,44 +1,52 @@
 /* tslint:disable */
-import { NgModule, ModuleWithProviders } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { ApiConfiguration, ApiConfigurationInterface } from './api-configuration';
+/* eslint-disable */
+import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 
-import { ApicategoriesService } from './services/apicategories.service';
-import { AuthApiService } from './services/auth-api.service';
-import { ApiService } from './services/api.service';
-import { ApitodosService } from './services/apitodos.service';
-import { ApiusersService } from './services/apiusers.service';
+import { UsersService } from './services/users.service';
+import { TodosService } from './services/todos.service';
+import { CategoriesService } from './services/categories.service';
+import { AuthService } from './services/auth.service';
 
 /**
- * Provider for all Api services, plus ApiConfiguration
+ * Module that provides all services and configuration.
  */
 @NgModule({
-  imports: [
-    HttpClientModule
-  ],
-  exports: [
-    HttpClientModule
-  ],
+  imports: [],
+  exports: [],
   declarations: [],
   providers: [
-    ApiConfiguration,
-    ApicategoriesService,
-    AuthApiService,
-    ApiService,
-    ApitodosService,
-    ApiusersService
+    UsersService,
+    TodosService,
+    CategoriesService,
+    AuthService,
+    ApiConfiguration
   ],
 })
 export class ApiModule {
-  static forRoot(customParams: ApiConfigurationInterface): ModuleWithProviders {
+  static forRoot(params: ApiConfigurationParams): ModuleWithProviders<ApiModule> {
     return {
       ngModule: ApiModule,
       providers: [
         {
           provide: ApiConfiguration,
-          useValue: {rootUrl: customParams.rootUrl}
+          useValue: params
         }
       ]
+    }
+  }
+
+  constructor( 
+    @Optional() @SkipSelf() parentModule: ApiModule,
+    @Optional() http: HttpClient
+  ) {
+    if (parentModule) {
+      throw new Error('ApiModule is already loaded. Import in your base AppModule only.');
+    }
+    if (!http) {
+      throw new Error('You need to import the HttpClientModule in your AppModule! \n' +
+      'See also https://github.com/angular/angular/issues/20575');
     }
   }
 }

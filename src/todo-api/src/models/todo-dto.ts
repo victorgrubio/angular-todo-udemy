@@ -1,11 +1,12 @@
 /* tslint:disable */
+/* eslint-disable */
 import { CategoryDto } from './category-dto';
 export interface TodoDto {
-  id?: number;
-  title?: string;
+  category?: CategoryDto;
   description?: string;
-  startDate?: string;
   done?: boolean;
   favorite?: boolean;
-  category?: CategoryDto;
+  id?: number;
+  startDate?: string;
+  title?: string;
 }
